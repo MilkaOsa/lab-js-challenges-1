@@ -67,19 +67,30 @@ const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
 function filterOut(stringArr, filteredArr) {
-  let remaningArr = [];
+  let remainingArr = [];
 
   for (let i = 0; i < stringArr.length; i++) {
     const animal = stringArr[i];
-    else if()
+    let shouldBeRemoved = false; // Variable para verificar si el elemento debe ser eliminado
 
+    // Segundo bucle para recorrer el array filteredArr
+    for (let j = 0; j < filteredArr.length; j++) {
+      if (animal === filteredArr[j]) {
+        shouldBeRemoved = true; // Si hay coincidencia, lo marcamos para eliminar
+        break; // No necesitamos seguir buscando, ya sabemos que debe ser eliminado
+      }
+    }
 
-    for (let j = 0; j < stringArr.length; j++) {
-      const removeAnimal = stringArr[j]; 
+    if (!shouldBeRemoved) {
+      remainingArr.push(animal); // Si no debe ser eliminado, lo añadimos al array
     }
   }
-  return remaningArr; 
+
+  return remainingArr;
 }
+
+console.log(filterOut(original, toRemove)); 
+// Output: ["fish", "bird", "fish"]
 
 
 
@@ -99,7 +110,35 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  // Crear un nuevo array para almacenar las palabras únicas
+  let uniqueArray = [];
+
+  // Iterar sobre cada elemento en el array original
+  for (let i = 0; i < arr.length; i++) {
+    // Si el elemento no está ya en uniqueArray, añadirlo
+    if (!uniqueArray.includes(arr[i])) {
+      uniqueArray.push(arr[i]);
+    }
+  }
+
+  // Retornar el array con elementos únicos
+  return uniqueArray;
+}
+
+// Array de prueba con duplicados
+const duplicateWords = [
+  "crab",
+  "poison",
+  "contagious",
+  "poison",
+  "simple",
+  "sharp",
+  "simple"
+];
+
+// Probar la función
+console.log(uniquifyArray(duplicateWords)); // Debería imprimir ["crab", "poison", "contagious", "simple", "sharp"]
 
 
 
